@@ -2,6 +2,8 @@ package org.tech.tasks;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,6 +13,13 @@ class IntegerToRomanConverterTest {
     @BeforeEach
     void seUp() {
         converter = new IntegerToRomanConverter();
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
+    void shouldGenerateValidRoman(int input, String expected ){
+        String actual =converter.convert(input);
+        assertEquals(expected, actual);
     }
 
     @Test
