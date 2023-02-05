@@ -1,7 +1,11 @@
 public class IntegerToRomanConverter {
 
    public   String convert(int arabicNumber) {
-        return "I";
+       StringBuilder result = new StringBuilder();
+        for(int i = 0; i < arabicNumber; i++){
+            result.append("I");
+        }
+        return result.toString();
     }
 
 }

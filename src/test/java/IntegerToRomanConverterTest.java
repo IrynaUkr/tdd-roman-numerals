@@ -16,4 +16,13 @@ class IntegerToRomanConverterTest {
         assertEquals("I", converter.convert(1));
     }
 
+    @Test
+    void shouldReturnIIWhenInputTwo() {
+        assertEquals("II", converter.convert(2));
+    }
+    @Test
+    void shouldReturnIIIWhenInputThree() {
+        assertEquals("III", converter.convert(3));
+    }
+
 }
