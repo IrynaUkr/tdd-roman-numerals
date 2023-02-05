@@ -24,5 +24,9 @@ class IntegerToRomanConverterTest {
     void shouldReturnIIIWhenInputThree() {
         assertEquals("III", converter.convert(3));
     }
+    @Test
+    void shouldReturnIVWhenInputFour() {
+        assertEquals("IV", converter.convert(4));
+    }
 
 }
