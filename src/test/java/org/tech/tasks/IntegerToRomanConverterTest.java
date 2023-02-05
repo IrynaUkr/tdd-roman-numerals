@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,13 +12,20 @@ class IntegerToRomanConverterTest {
     IntegerToRomanConverter converter;
 
     @BeforeEach
-    void seUp() {
+    void setUp() {
         converter = new IntegerToRomanConverter();
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
-    void shouldGenerateValidRoman(int input, String expected ){
+    void shouldGenerateValidRomanBasicCases(int input, String expected ){
+        String actual =converter.convert(input);
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3982:MMMCMLXXXII","2023 : MMXXIII", "99: XCIX"}, delimiter=':')
+    void shouldReturnValidRomanComplexNumbers(int input, String expected ){
         String actual =converter.convert(input);
         assertEquals(expected, actual);
     }
