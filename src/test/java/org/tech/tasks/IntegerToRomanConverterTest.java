@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class IntegerToRomanConverterTest {
     IntegerToRomanConverter converter;
@@ -18,17 +19,24 @@ class IntegerToRomanConverterTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
-    void shouldGenerateValidRomanBasicCases(int input, String expected ){
-        String actual =converter.convert(input);
+    void shouldGenerateValidRomanBasicCases(int input, String expected) {
+        String actual = converter.convert(input);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"3982:MMMCMLXXXII","2023 : MMXXIII", "99: XCIX"}, delimiter=':')
-    void shouldReturnValidRomanComplexNumbers(int input, String expected ){
-        String actual =converter.convert(input);
+    @CsvSource(value = {"3982:MMMCMLXXXII", "2023 : MMXXIII", "99: XCIX"}, delimiter = ':')
+    void shouldReturnValidRomanComplexNumbers(int input, String expected) {
+        String actual = converter.convert(input);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldThrowIllegalArgException() {
+        assertThrows(IllegalArgumentException.class, () -> converter.convert(0));
+        assertThrows(IllegalArgumentException.class, () -> converter.convert(-1));
+    }
+
 
     @Test
     void shouldReturnIWhenInputOne() {
@@ -99,6 +107,7 @@ class IntegerToRomanConverterTest {
     void shouldReturn_CM_WhenInputNignty() {
         assertEquals("CM", converter.convert(900));
     }
+
     @Test
     void shouldReturn_M_WhenInputThousand() {
         assertEquals("M", converter.convert(1000));
