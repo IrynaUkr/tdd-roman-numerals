@@ -39,6 +39,16 @@ class IntegerToRomanConverterTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
+    @Test
+    void shouldThrowIllegalArgExceptionWhenNumberIsNegative() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> converter.convert(-5));
+        String expectedMessage = "Input should not be negative";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+
 
 
     @Test
