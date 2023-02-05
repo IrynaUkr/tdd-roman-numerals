@@ -1,3 +1,5 @@
+package org.tech.tasks;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,13 +22,24 @@ class IntegerToRomanConverterTest {
     void shouldReturnIIWhenInputTwo() {
         assertEquals("II", converter.convert(2));
     }
+
     @Test
     void shouldReturnIIIWhenInputThree() {
         assertEquals("III", converter.convert(3));
     }
+
     @Test
     void shouldReturnIVWhenInputFour() {
         assertEquals("IV", converter.convert(4));
     }
 
+    @Test
+    void shouldReturnVWhenInputFive() {
+        assertEquals("V", converter.convert(5));
+    }
+
+    @Test
+    void shouldReturnVIWhenInputSix() {
+        assertEquals("VI", converter.convert(6));
+    }
 }
