@@ -4,7 +4,7 @@ public class IntegerToRomanConverter {
 
     public String convert(int number) {
         if(number <= 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input should not be zero");
         }
         StringBuilder result = new StringBuilder();
         String[] romans = { "M", "CM", "D", "CD", "C","XC", "L", "XL", "X", "IX", "V", "IV", "I"};

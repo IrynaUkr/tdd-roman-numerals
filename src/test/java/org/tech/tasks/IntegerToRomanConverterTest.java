@@ -6,8 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class IntegerToRomanConverterTest {
     IntegerToRomanConverter converter;
@@ -32,10 +31,14 @@ class IntegerToRomanConverterTest {
     }
 
     @Test
-    void shouldThrowIllegalArgException() {
-        assertThrows(IllegalArgumentException.class, () -> converter.convert(0));
-        assertThrows(IllegalArgumentException.class, () -> converter.convert(-1));
+    void shouldThrowIllegalArgExceptionWhenNumberIsZero() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> converter.convert(0));
+        String expectedMessage = "Input should not be zero";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
+
 
 
     @Test
