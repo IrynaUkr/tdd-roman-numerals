@@ -42,4 +42,20 @@ class IntegerToRomanConverterTest {
     void shouldReturnVIWhenInputSix() {
         assertEquals("VI", converter.convert(6));
     }
+    @Test
+    void shouldReturnXWhenInputTen() {
+        assertEquals("VI", converter.convert(6));
+    }
+    @Test
+    void shouldReturnXLWhenInputForty() {
+        assertEquals("XL", converter.convert(40));
+    }
+    @Test
+    void shouldReturnLWhenInputFifty() {
+        assertEquals("L", converter.convert(50));
+    }
+    @Test
+    void shouldReturnXCWhenInputNignty() {
+        assertEquals("XC", converter.convert(90));
+    }
 }
